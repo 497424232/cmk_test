@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 /**
+ * 保留两位小数的四种方法
  * @auther changmk
  * @date 2019/6/26 下午5:10
  */

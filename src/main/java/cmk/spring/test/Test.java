@@ -1,8 +1,10 @@
 package cmk.spring.test;
 
+import cmk.spring.config.SpringConfig;
 import cmk.spring.entity.User;
 import cmk.spring.service.UserService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -34,6 +36,12 @@ public class Test {
         System.out.println(user1.getClass() == user2.getClass());
 
 //        context.close();
+
+    }
+
+    public void loadConfig(){
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+
 
     }
 }

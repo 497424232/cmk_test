@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--三种创建bean方式-->
+    <!--默认使用构造函数-->
+    <!--创建方法init-method和销毁方法destroy-method-->
+    <bean id="userService" class="cmk.spring.service.impl.UserServiceImpl"
+          scope="singleton"
+
+          init-method="init" destroy-method="destory">
+    </bean>
+    <!-- 静态工厂方法调用构造函数-->
+    <bean id="staticUserService" class="cmk.spring.factory.StaticBeanFactory" factory-method="getUserService"></bean>
+    <!--实例对象调用构造函数-->
+    <bean id="instanceUserService" class="cmk.spring.factory.InstanceBeanFactory"></bean>
+    <bean id="userServiceImpl" factory-bean="instanceUserService" factory-method="getUserService"></bean>
+
+
+    <bean id="now" class="java.util.Date"></bean>
+
+    <bean id="user1" class="cmk.spring.entity.User">
+        <constructor-arg name="id" value="0"></constructor-arg>
+        <constructor-arg name="name" value="cmk"></constructor-arg>
+        <constructor-arg name="date" ref="now"></constructor-arg>
+    </bean>
+
+    <!--set方法注入-->
+    <bean id="user2" class="cmk.spring.entity.User">
+        <property name="id" value="1"></property>
+        <property name="name" value="zhangsan"></property>
+        <property name="date" ref="now"></property>
+    </bean>
+
+</beans>

@@ -1,7 +1,6 @@
 package cmk.zookeeper;
 
 import java.util.concurrent.CountDownLatch;
-import org.apache.*;
 
 /**
  * @auther changmk

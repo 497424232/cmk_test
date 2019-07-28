@@ -23,7 +23,7 @@ public class Client {
 
         final Actor actor = new Actor();
 
-        Actor actorClass = (Actor) Enhancer.create(Actor.class,
+        Actor cglibActor = (Actor) Enhancer.create(Actor.class,
                 new MethodInterceptor() {
                     /**
                      *
@@ -38,7 +38,7 @@ public class Client {
 
                         Integer money = (Integer) objects[0];
 
-                        Object rValue = o;
+                        Object rValue = null;
                         //在不改变原来类方法的基础上，通过判断增强此方法的作用
                         if (StringUtils.equals("normalAct", method.getName())) {
                             if (money > 100) {
@@ -55,8 +55,8 @@ public class Client {
                     }
                 });
 
-        actorClass.normalAct(122);
-        actorClass.specialAct(222);
+        cglibActor.normalAct(122);
+        cglibActor.specialAct(222);
 
 
     }
